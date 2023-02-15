@@ -18,7 +18,8 @@
 (define (->string v)
   (cond
     [(string? v) v]
-    [(number? v) (string (integer->char v))]))
+    [(number? v) (string (integer->char v))]
+    [else (~a v)]))
 
 (define (get-page rev subpage label)
   (define res (get (format "http://drdr.racket-lang.org/~a/~a" rev subpage)))

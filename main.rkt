@@ -10,11 +10,6 @@
          xml/path
          text-table)
 
-(define-values (rev-a rev-b)
-  (command-line
-   #:args (rev-a rev-b)
-   (values rev-a rev-b)))
-
 (define (->string v)
   (cond
     [(string? v) v]
@@ -67,6 +62,11 @@
                v-readable)])))))
 
 (module+ main
+  (define-values (rev-a rev-b)
+    (command-line
+     #:args (rev-a rev-b)
+     (values rev-a rev-b)))
+
   (let loop ([pages '()])
     (define subpage (string-append* (reverse pages)))
     (printf "subpage: ~a\n" subpage)
